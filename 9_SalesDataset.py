@@ -78,8 +78,7 @@ most_quantity = data.groupby('Product')['Quantity'].sum().sort_values(ascending=
 print(most_quantity)
 print(type(most_quantity))  #'pandas.core.series.Series
 most_quantity = most_quantity.reset_index()     # To convert the index of a Series into a column to form a DataFrame
-print(most_quantity)
-print(type(most_quantity)) #pandas.core.frame.DataFrame
+
 
 # Create chart
 plt.figure(figsize = (9,4))
@@ -89,13 +88,77 @@ plt.xlabel("Product")
 plt.ylabel("Quantity");
 plt.show()
 #By revenue
+data['Revenue'] = data['Price'] * data['Quantity']       # to create a new column 'Revenue'
+print(data)
 
-#print(data.info())
+most_revenue = data.groupby('Product')['Revenue'].sum().sort_values(ascending= True) # to make the group of unique values of a column
+
+
+print(type(most_revenue)) #pandas.core.frame.DataFrame
+most_revenue = most_revenue.reset_index()     # To convert the index of a Series into a column to form a DataFrame
+print(most_revenue)
+
+plt.figure(figsize=(9, 4))
+plt.bar(most_revenue['Product'], most_revenue['Revenue'], color = ['green', 'red', 'black', 'yellow', 'cyan'], width = 0.3);
+plt.title("Most Selling Product - By Revenue")       # setting the title       
+plt.xlabel("Product")                                # setting the x-axis label
+plt.ylabel("Revenue");                               # setting the y-axis label
+plt.show()
+
+
+
 #3 Which city had maximum revenue or which manager earned maximum revenue
+#CITY
+print(data.City.unique()) #get uniuqe city
+print(data.City.nunique()) #get nunique city
+print(data.groupby('City')['Revenue'].sum().sort_values(ascending=False))
+
+#Manager
+print(data.Manager.unique()) #get uniuqe Manager
+print(data.Manager.nunique()) #get nunique Manager
+print(data.groupby('Manager')['Revenue'].sum().sort_values(ascending=False))
+
 #4: Date wise revenue
+
+print(data.Date.dtype)
+print(data.info())
+data.plot('Date','Revenue',color='cyan', linewidth=2, figsize=(9,4))
+plt.title("Date wise Revenue")       # setting the title       
+plt.xlabel("Date")                                # setting the x-axis label
+plt.ylabel("Revenue");                               # setting the y-axis label
+plt.show()
+
 #5 Average revenue
+print(data.Revenue.mean())
+
 #6:Average revenue of november and december month
+data['Month'] = data['Date'].dt.month        # creating a new column showing Month only
+print(data.info())
+#filtering Month 11
+m11 = data[data['Month'] ==11]
+print(m11.Revenue.mean())
+
+# same for month 12
+m12 = data[data['Month']== 12]
+print(m12.Revenue.mean())
+
+
 #7:Standard deviation of revenue and quantity
+print(data['Revenue'].std())
+
+print(data['Quantity'].std())
 #8 Variance of revenue and quantity
+print(data['Revenue'].var())
+
+print(data['Quantity'].var())
+
 #9: Is revenue increasing or decrease over time?
+print(m11.Revenue.sum())
+print(" ")
+print(m12.Revenue.sum())
+
+
 #10: Average quantity sold and Average revenue for each product?
+#Avg_productsold = data.groupby('Product')['Quantity','Revenue'].agg({'Quantity' : 'mean','Revenue' : 'mean'})
+data.groupby('Product').agg({'Quantity': 'mean', 'Revenue': 'mean'})  # using agg() with groupby
+#print(Avg_productsold)
