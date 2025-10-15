@@ -96,9 +96,36 @@ plt.title("No. of Resigned employees")
 plt.ylabel("Count")
 
 plt.show()
+#Terminated
+data_terminated=data[data['Status']=='Terminated']
 
+print(data_terminated)
+t_emp=data_terminated.groupby('Department')['Status'].count()
+
+plt.figure(figsize=(10,6))
+t_emp.plot(x=t_emp.index,y = t_emp.values,kind='bar',color='r', legend=True,label = 'Terminated')
+plt.title=("No.of Terminated employees")
+plt.ylabel("Count")
+plt.show()
+
+#Both in same graph
+plt.figure(figsize=(10,6))
+r_emp.plot( x = r_emp.index, y = r_emp.values , kind = 'bar', color = 'black', legend = True, label = 'Resigned')
+t_emp.plot(x=t_emp.index,y = t_emp.values,kind='bar',color='r', legend=True,label = 'Terminated')
+plt.title=("No.of Resigned & Terminated  employees")
+plt.ylabel("Count")
+plt.show()
 #8 How does salary vary with year of experience
+print(data['Experience_Years'].nunique())
+print(data.groupby('Experience_Years')['Salary_INR'].mean())
+
 #9 what is the average performance rating by department?
+PR=data.groupby('Department')['Performance_Rating'].mean()
+plt.figure(figsize=(10,6))
+PR.plot( x = PR.index, y = PR.values , kind = 'bar', color = 'lightgreen')
+plt.title=("Average Performance Ratings Department Wise")
+plt.ylabel("Rating")
+plt.show()
 #10 which country have the highest concentration of employess?
 #11 Is there a correlation between performance rating and salary?
 #12 How has the number of hires changed overtime(per year)?
