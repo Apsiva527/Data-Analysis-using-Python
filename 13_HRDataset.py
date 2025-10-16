@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+
 import seaborn as sns
 sns.set_theme(style="whitegrid", palette="Set2")
 data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\HR_Data_MNC_Data Science Lovers.csv")
@@ -104,7 +105,7 @@ t_emp=data_terminated.groupby('Department')['Status'].count()
 
 plt.figure(figsize=(10,6))
 t_emp.plot(x=t_emp.index,y = t_emp.values,kind='bar',color='r', legend=True,label = 'Terminated')
-plt.title=("No.of Terminated employees")
+plt.title("No. of Terminated employees")
 plt.ylabel("Count")
 plt.show()
 
@@ -112,7 +113,7 @@ plt.show()
 plt.figure(figsize=(10,6))
 r_emp.plot( x = r_emp.index, y = r_emp.values , kind = 'bar', color = 'black', legend = True, label = 'Resigned')
 t_emp.plot(x=t_emp.index,y = t_emp.values,kind='bar',color='r', legend=True,label = 'Terminated')
-plt.title=("No.of Resigned & Terminated  employees")
+plt.title("No.of Resigned & Terminated  employees")
 plt.ylabel("Count")
 plt.show()
 #8 How does salary vary with year of experience
@@ -123,14 +124,62 @@ print(data.groupby('Experience_Years')['Salary_INR'].mean())
 PR=data.groupby('Department')['Performance_Rating'].mean()
 plt.figure(figsize=(10,6))
 PR.plot( x = PR.index, y = PR.values , kind = 'bar', color = 'lightgreen')
-plt.title=("Average Performance Ratings Department Wise")
+plt.title("Average Performance Ratings Department Wise")
 plt.ylabel("Rating")
 plt.show()
 #10 which country have the highest concentration of employess?
-#11 Is there a correlation between performance rating and salary?
-#12 How has the number of hires changed overtime(per year)?
-#13 Compare salaries of Remote vs On-Site employees - is there a significant difference?
-#14 Find the top 10 employees with the highest salary in each department
-#15 Identify departments with the highest attrition rate(Resigned %)
+data['Country'] = data['Location'].apply(lambda x :str(x.split(',')[1]))
+print(data)
+print(data.Country.unique())
+print(data.Country.nunique())
+print(data.Country.value_counts())
 
+#11 Is there a correlation between performance rating and salary?
+print(data['Performance_Rating'].corr(data['Salary_INR']))
+
+# Alternated Command to show Correlation
+print(data[['Performance_Rating','Salary_INR']].corr())
+sns.heatmap(data.corr(numeric_only=True))
+plt.show()
+
+#12 How has the number of hires changed overtime(per year)?
+print(data.Hire_Date.dtype)
+#Note we need to create new column year which we need to insert between column
+pd.set_option('display.max_columns', None)
+print(data.insert(5,'Year',data['Hire_Date'].dt.year))
+print(data)
+print(data.Year.unique())
+print(data.Year.nunique())
+hire=data.groupby('Year')['Employee_ID'].count()
+print(hire)
+
+#now draw grpah
+
+
+plt.figure(figsize=(10,5))
+hire.plot(x = hire.index, y = hire.values, kind = 'bar', color = 'violet')
+plt.grid(True, color ='green')
+plt.title("No. of Employees Hired in any Year")
+
+plt.ylabel("Count")
+
+plt.show()
+#13 Compare salaries of Remote vs On-Site employees - is there a significant difference?
+print(data.groupby('Work_Mode')['Salary_INR'].mean())
+#14 Find the top 10 employees with the highest salary in each department
+top_10=data.groupby('Department').apply(lambda x:x.nlargest(10,'Salary_INR'))
+print(top_10)
+print(top_10.head(40))
+print(top_10.tail(30))
+#15 Identify departments with the highest attrition rate(Resigned %)
+dept_counts=data.groupby('Department')['Status'].agg(total_emp='count', resigned = lambda x:(x == 'Resigned').sum())
+print(dept_counts)
+type(dept_counts)
+# Calculate attrition rate
+
+dept_counts['attrition_rate_%'] = (dept_counts['resigned'] / dept_counts['total_emp']) * 100
+
+# Sort by attrition rate (highest first)
+
+dept_counts.sort_values("attrition_rate_%", ascending = False)
 
