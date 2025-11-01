@@ -1,5 +1,5 @@
 import pandas as pd
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\WeatherDataset.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Project+1+-+Weather+Dataset.csv")
 print(data)
 print(data.head())
 print(data.shape)
