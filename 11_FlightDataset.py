@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #%matplotlib inline  note:only works in IPython environments like Jupyter Notebook or Jupyter Lab.
 import seaborn as sns
 plt.xticks(rotation=45) 
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\11. airlines_flights_data.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\11. airlines_flights_data.csv")
 pd.set_option('display.max_columns', None)
 print(data)
 #cleaning the data

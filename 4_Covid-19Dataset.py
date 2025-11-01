@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-coviddata = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Covid_19_data.csv")
+coviddata = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Covid_19_data.csv")
 print(coviddata)
 print(coviddata.count())
 #Null values means missing values

@@ -1,5 +1,5 @@
 import pandas as pd
-data= pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\3. Police Data.csv")
+data= pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\3. Police Data.csv")
 print(data)
 
 

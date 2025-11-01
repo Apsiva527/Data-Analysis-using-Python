@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 import seaborn as sns
 sns.set_theme(style="whitegrid", palette="Set2")
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\HR_Data_MNC_Data Science Lovers.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\HR_Data_MNC_Data Science Lovers.csv")
 print(data)
 
 print(data.info())

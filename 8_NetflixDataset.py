@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Netflix+Dataset.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Netflix+Dataset.csv")
 #print(data)
 print(data.head(3)) # to show top 5 records of the dataset
 print(data.tail(3)) # to show bottom 5 records of dataset

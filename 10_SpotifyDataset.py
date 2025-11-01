@@ -3,7 +3,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 #%matplotlib inline
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Spotify_Youtube.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Spotify_Youtube.csv")
 print(data)
 print(data.columns)
 print(data.info())

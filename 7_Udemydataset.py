@@ -1,5 +1,5 @@
 import pandas as pd
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Project+7+-+Udemy+Dataset.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Project+7+-+Udemy+Dataset.csv")
 print(data)
 
 #1 what are all different subject for which Udemy is offering courses?

@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\ai_financial_market_daily_realistic_synthetic.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\ai_financial_market_daily_realistic_synthetic.csv")
 print(data)
 # Show basic information about the data
 print(data.info())

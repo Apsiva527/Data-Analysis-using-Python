@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-LH= pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Housing+Data.csv")
+LH= pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Housing+Data.csv")
 print(LH)
 
 #1.

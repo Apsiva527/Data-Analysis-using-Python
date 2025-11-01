@@ -1,5 +1,5 @@
 import pandas as pd
-cardataset = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Cars_Dataset.csv")
+cardataset = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Project+2+-+Cars+Dataset.csv")
 print(cardataset)
 #1.Instruction for data cleaning
 #Find all null value in dataset and replace with mean with the mean of that column

@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-data = pd.read_excel(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Sales-Data-Analysis.xlsx")
+data = pd.read_excel(r"C:\Users\amuda\13DataAnalysisProject\Sales-Data-Analysis.xlsx")
 print(data)
 print(data.info())
 #CLEANING THE DATA drop unwanted column,changing column names, removing duplicate records, converting datatypesof the columns

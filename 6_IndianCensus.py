@@ -1,6 +1,6 @@
 import pandas as pd
 import jinja2
-data = pd.read_csv(r"C:\Users\amuda.sivaraj\PythonDatasets\13PythonDApractice\Census+2011.csv")
+data = pd.read_csv(r"C:\Users\amuda\13DataAnalysisProject\Census+2011.csv")
 print(data)
 
 #how will you hide Index
